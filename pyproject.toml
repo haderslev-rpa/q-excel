@@ -8,6 +8,9 @@ dependencies = [
     "automation-server-client",
     "q-haderslev-vbo",
     "requests>=2.31.0",
+    "pandas",
+    "openpyxl",
+    "q-excel",
 ]
 
 [tool.uv.sources]
