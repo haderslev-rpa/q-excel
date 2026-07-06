@@ -12,7 +12,7 @@ def get_file_suffix(filename_or_path: str) -> str:
     Finder filtypen fra et filnavn eller en filsti.
 
     Eksempler:
-        "test.xlsx" -> ".xlsx"
+        "fil.xlsx" -> ".xlsx"
         "data.csv" -> ".csv"
     """
 
@@ -23,8 +23,8 @@ def bytes_to_memory_file(file_bytes: bytes) -> BytesIO:
     """
     Laver bytes om til et fil-lignende memory-objekt.
 
-    BytesIO gør, at pandas kan læse filen,
-    uden at filen først skal gemmes på disk.
+    bytes betyder rå filindhold.
+    BytesIO betyder fil i memory.
     """
 
     if not file_bytes:
@@ -37,12 +37,12 @@ def clean_dataframe(df: pd.DataFrame) -> pd.DataFrame:
     """
     Rydder op i en DataFrame.
 
-    DataFrame betyder en tabel i pandas.
+    DataFrame betyder pandas-tabel.
 
     Gør:
     - tomme værdier bliver til ""
-    - kolonnenavne bliver trimmet for mellemrum
     - kolonnenavne bliver tekst
+    - kolonnenavne får fjernet mellemrum før/efter
     """
 
     df = df.fillna("")
@@ -55,7 +55,8 @@ def dataframe_to_dicts(df: pd.DataFrame) -> List[Dict[str, Any]]:
     """
     Konverterer en DataFrame til en liste med dicts.
 
-    Hver række i Excel bliver til én dict.
+    dict betyder nøgle/værdi-data.
+    Hver række bliver til én dict.
     """
 
     return df.to_dict(orient="records")
